@@ -1,20 +1,15 @@
 # Cloudflare Pages 응답 헤더 설정
 #
-# 기본값으로는 CSS/JS가 4시간 동안 브라우저에 캐시되어, 파일을 고쳐도
-# 바로 반영되지 않는다(방문자는 옛날 파일을 계속 본다).
-# 아래 설정은 매번 서버에 "바뀌었나요?" 하고 묻게 만든다.
-# 내용이 같으면 304로 끝나므로 속도 손해는 거의 없다.
+# Pages 기본값은 정적 파일을 브라우저에 4시간 캐시한다(max-age=14400).
+# 그래서 GitHub에서 파일을 고쳐도 이미 방문한 사람에게는 몇 시간 동안
+# 옛날 파일이 그대로 보인다.
+#
+# 아래처럼 기본을 no-cache 로 두면 매번 서버에 "바뀌었나요?"를 묻고,
+# 내용이 같으면 304(본문 없음)로 끝나므로 속도 손해는 거의 없다.
+# 사진만 예외로 하루 캐시한다.
 
-/assets/css/*
-  Cache-Control: public, max-age=0, must-revalidate
+/*
+  Cache-Control: no-cache
 
-/assets/js/*
-  Cache-Control: public, max-age=0, must-revalidate
-
-# 진료시간·공지는 자주 바뀌므로 항상 최신을 받아야 한다.
-/data/*
-  Cache-Control: public, max-age=0, must-revalidate
-
-# 이미지는 바뀔 일이 드물어 하루 캐시한다.
 /assets/images/*
   Cache-Control: public, max-age=86400
