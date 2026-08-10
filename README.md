@@ -15,7 +15,8 @@ Cloudflare Pages에 그대로 올리면 바로 동작합니다.
 │   ├── css/style.css     # 스타일 (White / Dark Gray / Orange)
 │   ├── js/main.js        # 모바일 메뉴 + JSON 데이터 렌더링
 │   └── images/
-│       └── doctor-kimeunjin.jpg   # 대표원장 프로필 사진
+│       ├── doctor-kimeunjin.jpg   # 대표원장 프로필 사진
+│       └── logo.svg               # 치아 로고 마크 (벡터)
 ├── data/
 │   ├── hours.json        # 진료시간  ← 여기만 고치면 됩니다
 │   └── notice.json       # 공지사항  ← 여기만 고치면 됩니다
@@ -76,9 +77,10 @@ Cloudflare Pages에 그대로 올리면 바로 동작합니다.
 `assets/images/` 안의 파일을 **같은 이름으로** 덮어쓰면 됩니다.
 파일명을 바꿨다면 `index.html`의 `<img src="...">` 경로도 함께 수정하세요.
 
-> 대표원장 사진(`doctor-kimeunjin.jpg`, 487×650)은 간판 시안 파일에서 추출한 것이라
-> 해상도에 한계가 있습니다. 촬영 원본이 있으면 그 파일로 교체하고
-> `index.html`의 `<img ... width height>` 값도 실제 크기로 맞춰주세요.
+> 대표원장 사진(`doctor-kimeunjin.jpg`, 730×975)은 간판 시안 파일에 들어 있던
+> 487×650 이미지를 노이즈 제거 후 1.5배 확대한 것입니다. 원본에 없던 디테일이
+> 생기지는 않으므로, **촬영 원본이 있으면 그 파일로 교체하는 것이 가장 좋습니다.**
+> 교체 시 `index.html`의 `<img ... width height>` 값도 실제 크기로 맞춰주세요.
 
 ---
 
@@ -153,10 +155,10 @@ python3 -m http.server 8000
 | 본문/헤더(진회색) | `--gray-900`  | `#2B2B2E` |
 | 배경(흰색)      | `--white`      | `#FFFFFF` |
 
-- 헤더 로고의 치아 심볼은 이미지가 아니라 `index.html` 안의 **인라인 SVG**입니다.
-  간판·가운 자수의 심볼을 옮긴 것으로, 크기를 키워도 깨지지 않습니다.
-  색은 `currentColor`를 따르고 크기는 `em` 기준이라 `.logo`의 `font-size`만 바꾸면
-  글자와 심볼이 같이 커집니다.
+- 헤더의 치아 로고(`assets/images/logo.svg`)는 명함 원본(`namec_1.pdf`)에 들어 있던
+  **벡터 도형을 그대로 추출한 것**이라 아무리 확대해도 깨지지 않습니다.
+  비율(100:98.66)은 SVG가 유지하므로 CSS에서는 높이만 지정합니다.
+  크기는 `em` 기준이라 `.logo`의 `font-size`만 바꾸면 글자와 로고가 같이 커집니다.
 - 모바일 우선 반응형 (768px / 1024px 브레이크포인트)
 - 애니메이션은 버튼 호버와 메뉴 아이콘에만 사용 (`prefers-reduced-motion` 대응)
 - 모바일에서는 화면 하단에 **전화 / 이메일 / 길찾기** 고정 바가 항상 노출됩니다

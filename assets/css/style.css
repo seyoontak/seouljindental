@@ -112,12 +112,6 @@ h3 { font-size: 17px; font-weight: 700; letter-spacing: -.01em; }
 .btn-outline { background: transparent; color: var(--gray-800); border-color: var(--line); }
 .btn-outline:hover { border-color: var(--gray-800); }
 
-.btn-accent { background: var(--orange); color: #fff; border-color: var(--orange); }
-.btn-accent:hover { background: var(--orange-dark); border-color: var(--orange-dark); }
-
-.btn-ghost { background: transparent; color: #fff; border-color: rgba(255, 255, 255, .45); }
-.btn-ghost:hover { background: rgba(255, 255, 255, .12); }
-
 /* 5. 헤더 ----------------------------------------------------------------- */
 .header {
   position: sticky; top: 0; z-index: 100;
@@ -131,17 +125,15 @@ h3 { font-size: 17px; font-weight: 700; letter-spacing: -.01em; }
 }
 
 .logo {
-  display: inline-flex; align-items: center; gap: 7px;
-  font-size: 24px; font-weight: 700; letter-spacing: -.03em;
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 26px; font-weight: 700; letter-spacing: -.03em;
   color: var(--gray-900); flex-shrink: 0;
 }
 .logo .logo-text span { color: var(--orange); }
 
-/* 치아 심볼 — 글자 크기에 맞춰 함께 커지도록 em 단위 사용 */
-.logo-mark {
-  width: 1.12em; height: 1.12em; flex-shrink: 0;
-  color: var(--orange);
-}
+/* 치아 심볼 — 글자 크기에 맞춰 함께 커지도록 em 단위 사용.
+   가로세로 비율(100:98.66)은 SVG가 유지하므로 높이만 지정한다. */
+.logo-mark { height: 1.2em; width: auto; flex-shrink: 0; }
 
 .nav { display: none; }
 
@@ -230,9 +222,14 @@ h3 { font-size: 17px; font-weight: 700; letter-spacing: -.01em; }
   overflow: hidden; background: var(--white);
 }
 
-.doctor-photo { background: var(--gray-100); }
-/* 모바일에서는 가운의 로고까지 잘리지 않도록 사진 전체를 보여준다. */
-.doctor-photo img { width: 100%; height: auto; }
+/* 사진은 원본 해상도에 한계가 있어 크게 띄우지 않는다.
+   표시 크기를 줄이면 화면 밀도가 올라가 더 선명하게 보인다. */
+.doctor-photo {
+  background: var(--gray-100);
+  display: flex; justify-content: center;
+  padding: 24px 20px 0;
+}
+.doctor-photo img { width: 100%; max-width: 240px; height: auto; }
 
 .doctor-body { padding: 24px 20px; }
 
@@ -337,14 +334,6 @@ h3 { font-size: 17px; font-weight: 700; letter-spacing: -.01em; }
 .info-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
 .info-actions .btn { flex: 1 1 auto; }
 
-/* 12. CTA ----------------------------------------------------------------- */
-.cta { background: var(--gray-900); color: #fff; padding: 44px 0; }
-.cta-inner { display: grid; gap: 20px; }
-.cta h2 { margin-bottom: 6px; }
-.cta p { color: var(--gray-400); font-size: 14.5px; }
-.cta-actions { display: flex; flex-wrap: wrap; gap: 10px; }
-.cta-actions .btn { flex: 1 1 auto; }
-
 /* 13. 푸터 ---------------------------------------------------------------- */
 .footer {
   background: var(--gray-800); color: var(--gray-400);
@@ -398,11 +387,9 @@ h3 { font-size: 17px; font-weight: 700; letter-spacing: -.01em; }
 
   .section { padding: 80px 0; }
 
-  .doctor { display: grid; grid-template-columns: 320px 1fr; }
-  .doctor-photo { height: 100%; }
-  .doctor-photo img {
-    height: 100%; object-fit: cover; object-position: center top;
-  }
+  .doctor { display: grid; grid-template-columns: 296px 1fr; }
+  .doctor-photo { align-items: flex-start; padding: 28px; }
+  .doctor-photo img { max-width: none; }
   .doctor-body { padding: 32px; }
 
   .cv { grid-template-columns: repeat(2, 1fr); gap: 22px 32px; }
@@ -410,10 +397,6 @@ h3 { font-size: 17px; font-weight: 700; letter-spacing: -.01em; }
   .hours-wrap { grid-template-columns: 1.35fr 1fr; align-items: start; }
   .location { grid-template-columns: minmax(0, 620px); }
   .info-block, .hours-cta { padding: 28px; }
-
-  .cta { padding: 56px 0; }
-  .cta-inner { grid-template-columns: 1fr auto; align-items: center; }
-  .cta-actions .btn { flex: 0 0 auto; min-width: 180px; }
 
   .footer { padding-bottom: 36px; }
   .footer-inner { grid-template-columns: 1fr auto; }
@@ -455,6 +438,6 @@ h3 { font-size: 17px; font-weight: 700; letter-spacing: -.01em; }
 
 /* 18. 인쇄 --------------------------------------------------------------- */
 @media print {
-  .header, .mobile-bar, .cta, .hero-actions, .info-actions { display: none; }
+  .header, .mobile-bar, .hero-actions, .info-actions { display: none; }
   body { font-size: 12pt; }
 }
