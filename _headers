@@ -1,21 +1,16 @@
 # Cloudflare Pages 응답 헤더 설정
 #
-# Pages 기본값은 정적 파일을 브라우저에 4시간 캐시한다(max-age=14400).
-# 그래서 GitHub에서 파일을 고쳐도 이미 방문한 사람에게는 몇 시간 동안
-# 옛날 파일이 그대로 보인다.
-#
 # no-cache 는 "캐시하지 말라"가 아니라 "쓰기 전에 서버에 물어보라"는 뜻이다.
 # 내용이 같으면 304(본문 없음)로 끝나므로 속도 손해는 거의 없다.
-# 사진만 예외로 하루 캐시한다.
+#
+# 주의: .css / .js 파일은 Cloudflare Pages가 4시간 캐시(max-age=14400)를
+#       강제하며, 여기서 덮어써지지 않는다(경로를 정확히 적어도 안 됨).
+#       그래서 index.html에서 `style.css?v=1` 처럼 버전을 붙여
+#       캐시를 무효화한다. 자세한 내용은 README 9번.
 
 /*
   Cache-Control: no-cache
 
-/assets/css/style.css
-  Cache-Control: no-cache
-
-/assets/js/main.js
-  Cache-Control: no-cache
-
+# 사진은 바뀔 일이 드물어 하루 캐시한다.
 /assets/images/*
   Cache-Control: public, max-age=86400

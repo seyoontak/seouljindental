@@ -213,3 +213,31 @@ var NAVER_MAP = {
   도메인을 바꾸면 콘솔에서 URL을 추가해 주세요.
 - 키가 잘못됐거나 지도를 불러오지 못하면 자동으로 기본 지도가 그대로 표시되므로,
   페이지가 깨지지는 않습니다.
+
+---
+
+## 9. 고쳤는데 화면이 그대로일 때 (캐시)
+
+`assets/css/style.css` 나 `assets/js/main.js` 를 고쳤는데 사이트에 반영되지
+않는다면 **브라우저 캐시** 때문입니다. Cloudflare Pages는 CSS/JS 파일을
+4시간 동안 캐시하도록 강제하며, `_headers` 로도 덮어쓸 수 없습니다.
+
+### 해결: `index.html` 의 버전 숫자를 올린다
+
+```html
+<link rel="stylesheet" href="assets/css/style.css?v=1">
+<script src="assets/js/main.js?v=1" defer></script>
+```
+
+`?v=1` 을 `?v=2` 로 바꾸면 브라우저가 새 파일로 인식해 즉시 받아갑니다.
+**CSS나 JS를 고칠 때마다 이 숫자를 1씩 올려주세요.** (두 줄 모두)
+
+### 내 화면에서만 급히 확인하고 싶다면
+
+- Windows: `Ctrl` + `F5`
+- Mac: `Cmd` + `Shift` + `R`
+- 또는 시크릿 창에서 열기
+
+> `index.html`, `data/*.json`, 이미지는 이 문제가 없습니다.
+> HTML과 JSON은 항상 최신을 확인하고, 이미지는 파일명을 바꾸면 바로 반영됩니다.
+
