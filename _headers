@@ -4,11 +4,17 @@
 # 그래서 GitHub에서 파일을 고쳐도 이미 방문한 사람에게는 몇 시간 동안
 # 옛날 파일이 그대로 보인다.
 #
-# 아래처럼 기본을 no-cache 로 두면 매번 서버에 "바뀌었나요?"를 묻고,
+# no-cache 는 "캐시하지 말라"가 아니라 "쓰기 전에 서버에 물어보라"는 뜻이다.
 # 내용이 같으면 304(본문 없음)로 끝나므로 속도 손해는 거의 없다.
 # 사진만 예외로 하루 캐시한다.
 
 /*
+  Cache-Control: no-cache
+
+/assets/css/style.css
+  Cache-Control: no-cache
+
+/assets/js/main.js
   Cache-Control: no-cache
 
 /assets/images/*
