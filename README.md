@@ -157,7 +157,7 @@ python3 -m http.server 8000
 | 본문/헤더(진회색) | `--gray-900`  | `#2B2B2E` |
 | 배경(흰색)      | `--white`      | `#FFFFFF` |
 
-- 헤더의 치아 로고(`assets/images/logo.svg`)는 명함 원본(`namec_1.pdf`)에 들어 있던
+- 헤더의 치아 로고(`assets/images/logo.svg`)는 명함 원본(`REFS/namec_1.pdf`)에 들어 있던
   **벡터 도형을 그대로 추출한 것**이라 아무리 확대해도 깨지지 않습니다.
   비율(100:98.66)은 SVG가 유지하므로 CSS에서는 높이만 지정합니다.
   크기는 `em` 기준이라 `.logo`의 `font-size`만 바꾸면 글자와 로고가 같이 커집니다.
