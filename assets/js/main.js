@@ -8,6 +8,25 @@
 (function () {
   'use strict';
 
+  /* ------------------------------------------------------------------ *
+   *  지도 설정
+   *
+   *  keyId 를 채우면 네이버 지도로 표시됩니다. 비워두면 기본 지도가
+   *  그대로 보이므로, 키가 없어도 사이트는 정상 동작합니다.
+   *
+   *  Key ID 발급: https://console.ncloud.com
+   *    Services > Application Service > Maps > Application 등록
+   *    -> Web Dynamic Map 체크, 서비스 URL에 배포 도메인 등록
+   *  (자세한 순서는 README 8번 참고)
+   * ------------------------------------------------------------------ */
+  var NAVER_MAP = {
+    keyId: '',                       // 예: 'abcd1234efgh'
+    lat: 37.37300,                   // 경기도 안양시 동안구 경수대로 562
+    lng: 126.95820,
+    zoom: 17,
+    label: '서울진치과 <b>2F</b>'
+  };
+
   /* --- 유틸 --------------------------------------------------------------- */
 
   var $ = function (sel) { return document.querySelector(sel); };
@@ -147,9 +166,55 @@
     list.appendChild(frag);
   }
 
+  /* --- 4. 네이버 지도 (Key ID가 있을 때만) --------------------------------- */
+
+  function initNaverMap() {
+    var canvas = $('#naverMap');
+    var fallback = $('#mapFallback');
+    if (!canvas || !NAVER_MAP.keyId) { return; }   // 키가 없으면 기본 지도 유지
+
+    var script = document.createElement('script');
+    script.src = 'https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId='
+               + encodeURIComponent(NAVER_MAP.keyId);
+
+    script.onload = function () {
+      if (!window.naver || !window.naver.maps) { return; }
+
+      var pos = new naver.maps.LatLng(NAVER_MAP.lat, NAVER_MAP.lng);
+      var map = new naver.maps.Map(canvas, {
+        center: pos,
+        zoom: NAVER_MAP.zoom,
+        scaleControl: false,
+        mapDataControl: false,
+        logoControlOptions: { position: naver.maps.Position.BOTTOM_LEFT }
+      });
+
+      new naver.maps.Marker({
+        position: pos,
+        map: map,
+        title: '서울진치과',
+        icon: {
+          content: '<div class="map-marker">' + NAVER_MAP.label + '</div>',
+          anchor: new naver.maps.Point(0, 0)
+        }
+      });
+
+      // 지도가 준비된 뒤에 교체해야 빈 화면이 잠깐 보이지 않는다.
+      canvas.hidden = false;
+      if (fallback) { fallback.hidden = true; }
+    };
+
+    script.onerror = function () {
+      console.error('[서울진치과] 네이버 지도를 불러오지 못했습니다. 기본 지도를 표시합니다.');
+    };
+
+    document.head.appendChild(script);
+  }
+
   /* --- 초기화 -------------------------------------------------------------- */
 
   initMenu();
+  initNaverMap();
   loadJSON('data/hours.json').then(renderHours);
   loadJSON('data/notice.json').then(renderNotice);
 })();

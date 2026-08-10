@@ -253,13 +253,21 @@
       <h2>오시는 길</h2>
 
       <div class="location">
-        <!-- 지도: API 키가 필요 없는 임베드. 길찾기는 네이버지도로 연결한다. -->
+        <!-- 지도
+             네이버 지도는 iframe 삽입이 차단(X-Frame-Options: DENY)되어 있어
+             JS API로만 표시할 수 있고, 여기에는 발급받은 Key ID가 필요하다.
+             assets/js/main.js 의 NAVER_MAP.keyId 를 채우면 네이버 지도로 바뀌고,
+             비어 있으면 아래 기본 지도가 그대로 보인다. (README 8번 참고) -->
         <div class="map">
-          <iframe
-            src="https://maps.google.com/maps?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%95%88%EC%96%91%EC%8B%9C%20%EB%8F%99%EC%95%88%EA%B5%AC%20%EA%B2%BD%EC%88%98%EB%8C%80%EB%A1%9C%20562&amp;z=17&amp;hl=ko&amp;output=embed"
-            title="서울진치과 위치 지도" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"></iframe>
-          <p class="map-pin" aria-hidden="true">서울진치과 <span>2F</span></p>
+          <div class="map-canvas" id="naverMap" hidden></div>
+
+          <div class="map-fallback" id="mapFallback">
+            <iframe
+              src="https://maps.google.com/maps?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%95%88%EC%96%91%EC%8B%9C%20%EB%8F%99%EC%95%88%EA%B5%AC%20%EA%B2%BD%EC%88%98%EB%8C%80%EB%A1%9C%20562&amp;z=17&amp;hl=ko&amp;output=embed"
+              title="서울진치과 위치 지도" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <p class="map-pin" aria-hidden="true">서울진치과 <span>2F</span></p>
+          </div>
         </div>
 
         <div class="info-block">
