@@ -1,0 +1,12 @@
+# 원본 자료 (홈페이지 구동에 불필요 — 로컬에만 보관)
+files.zip
+namec_1.pdf
+로고간판*.jpg
+김은진.jpg
+
+# 로컬 도구 설정
+.claude/
+
+# OS
+.DS_Store
+Thumbs.db
