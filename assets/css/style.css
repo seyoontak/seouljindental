@@ -295,7 +295,10 @@ h3 { font-size: 17px; font-weight: 700; letter-spacing: -.01em; }
   background: var(--gray-100);
 }
 .map iframe { width: 100%; height: 100%; border: 0; display: block; }
-.map-canvas { position: absolute; inset: 0; }
+/* 네이버 지도 스크립트가 컨테이너의 position 을 inline 으로 relative 로
+   덮어쓴다. 그러면 inset:0 이 무효가 되어 높이가 0으로 접히므로,
+   width/height 를 명시해 어느 쪽이든 부모를 채우게 한다. */
+.map-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
 .map-fallback { position: absolute; inset: 0; }
 .map-canvas[hidden], .map-fallback[hidden] { display: none; }
 
