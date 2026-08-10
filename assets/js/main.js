@@ -177,8 +177,27 @@
     script.src = 'https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId='
                + encodeURIComponent(NAVER_MAP.keyId);
 
+    // 인증 실패(도메인 미등록, 잘못된 키 등) 시 네이버가 호출하는 콜백.
+    // 빈 지도가 남지 않도록 기본 지도로 되돌린다.
+    window.navermap_authFailure = function () {
+      console.error('[서울진치과] 네이버 지도 인증에 실패했습니다. '
+                  + '콘솔에 등록한 서비스 URL과 Key ID를 확인해 주세요.');
+      revert();
+    };
+
+    function revert() {
+      canvas.hidden = true;
+      if (fallback) { fallback.hidden = false; }
+    }
+
     script.onload = function () {
-      if (!window.naver || !window.naver.maps) { return; }
+      if (!window.naver || !window.naver.maps) { revert(); return; }
+
+      // 지도를 만들기 전에 먼저 보이게 해야 한다.
+      // display:none 상태에서는 네이버가 컨테이너 크기를 0으로 재서
+      // 타일이 하나도 그려지지 않는다. 기본 지도가 아직 위를 덮고 있으므로
+      // 이 시점에 화면이 깜빡이지는 않는다.
+      canvas.hidden = false;
 
       var pos = new naver.maps.LatLng(NAVER_MAP.lat, NAVER_MAP.lng);
       var map = new naver.maps.Map(canvas, {
@@ -199,13 +218,16 @@
         }
       });
 
-      // 지도가 준비된 뒤에 교체해야 빈 화면이 잠깐 보이지 않는다.
-      canvas.hidden = false;
-      if (fallback) { fallback.hidden = true; }
+      // 타일이 실제로 그려진 뒤에 기본 지도를 치운다.
+      naver.maps.Event.once(map, 'init', function () {
+        naver.maps.Event.trigger(map, 'resize');
+        if (fallback) { fallback.hidden = true; }
+      });
     };
 
     script.onerror = function () {
       console.error('[서울진치과] 네이버 지도를 불러오지 못했습니다. 기본 지도를 표시합니다.');
+      revert();
     };
 
     document.head.appendChild(script);
