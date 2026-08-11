@@ -354,6 +354,16 @@ h3 { font-size: 17px; font-weight: 700; letter-spacing: -.01em; }
 .hours tr:last-child td { border-bottom: none; }
 .hours tr.is-closed td { color: var(--orange); font-weight: 500; }
 
+/* 점심시간 — 진료 요일과 구분되도록 굵은 선과 배경을 준다. */
+.hours tr.is-lunch td {
+  border-top: 2px solid var(--line); border-bottom: none;
+  background: var(--gray-100); padding: 11px 12px;
+}
+.hours tr.is-lunch td:first-child { color: var(--gray-900); }
+.hours tr.is-lunch small {
+  display: block; font-size: 12px; color: var(--muted); margin-top: 3px;
+}
+
 .hours-note {
   margin-top: 12px; font-size: 13px; color: var(--muted);
   background: var(--gray-100); border-radius: var(--radius); padding: 10px 12px;

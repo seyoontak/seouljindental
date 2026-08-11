@@ -120,11 +120,27 @@
       frag.appendChild(row);
     });
 
+    // 점심시간은 눈에 잘 띄도록 표의 마지막 줄로 넣는다.
+    // 예전처럼 문자열로 적혀 있으면 아래 안내 박스로 보낸다(하위 호환).
+    var lunchText = '';
+    if (data.lunch && typeof data.lunch === 'object') {
+      var lunchRow = el('tr', 'is-lunch');
+      lunchRow.appendChild(el('td', '', '점심시간'));
+
+      var cell = el('td');
+      cell.appendChild(el('span', '', data.lunch.time || ''));
+      if (data.lunch.note) { cell.appendChild(el('small', '', data.lunch.note)); }
+      lunchRow.appendChild(cell);
+      frag.appendChild(lunchRow);
+    } else if (typeof data.lunch === 'string') {
+      lunchText = data.lunch;
+    }
+
     body.innerHTML = '';
     body.appendChild(frag);
 
     if (note) {
-      note.textContent = [data.lunch, data.note].filter(Boolean).join(' · ');
+      note.textContent = [lunchText, data.note].filter(Boolean).join(' · ');
     }
   }
 
