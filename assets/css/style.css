@@ -124,16 +124,11 @@ h3 { font-size: 17px; font-weight: 700; letter-spacing: -.01em; }
   gap: 16px; height: 64px;
 }
 
-.logo {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-size: 26px; font-weight: 700; letter-spacing: -.03em;
-  color: var(--gray-900); flex-shrink: 0;
-}
-.logo .logo-text span { color: var(--orange); }
+.logo { display: inline-flex; align-items: center; flex-shrink: 0; }
 
-/* 치아 심볼 — 글자 크기에 맞춰 함께 커지도록 em 단위 사용.
-   가로세로 비율(100:98.66)은 SVG가 유지하므로 높이만 지정한다. */
-.logo-mark { height: 1.2em; width: auto; flex-shrink: 0; }
+/* 로고 락업(심볼 + 서울진치과 + 영문)은 명함에서 추출한 벡터 한 장이다.
+   비율(400:89.72)은 SVG가 유지하므로 높이만 지정한다. */
+.logo-lockup { height: 38px; width: auto; display: block; }
 
 .nav { display: none; }
 
@@ -456,6 +451,7 @@ h3 { font-size: 17px; font-weight: 700; letter-spacing: -.01em; }
   html { scroll-padding-top: 80px; }
 
   .header-inner { height: 76px; }
+  .logo-lockup { height: 42px; }
 
   .nav { display: flex; gap: 4px; margin-left: auto; }
   .nav a {

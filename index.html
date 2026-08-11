@@ -30,7 +30,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=1">
+<link rel="stylesheet" href="assets/css/style.css?v=2">
 
 <script type="application/ld+json">
 {
@@ -50,8 +50,9 @@
     "addressCountry": "KR"
   },
   "openingHoursSpecification": [
-    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:30", "closes": "18:30" },
-    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:30", "closes": "14:00" }
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Thursday","Friday"], "opens": "10:00", "closes": "18:30" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Wednesday", "opens": "14:00", "closes": "21:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "14:00" }
   ]
 }
 </script>
@@ -63,9 +64,10 @@
 <header class="header">
   <div class="wrap header-inner">
     <a class="logo" href="#top" aria-label="서울진치과 홈">
-      <!-- 로고 마크: 명함(namec_1.pdf)의 벡터 원본을 그대로 추출한 SVG -->
-      <img class="logo-mark" src="assets/images/logo.svg" alt="" width="34" height="34">
-      <span class="logo-text">서울<span>진</span>치과</span>
+      <!-- 명함(REFS/namec_1.pdf)의 로고 원본을 그대로 추출한 벡터.
+           글자까지 실제 브랜드 폰트라 어떤 크기에서도 정확히 일치한다. -->
+      <img class="logo-lockup" src="assets/images/logo-lockup.svg" alt=""
+           width="400" height="90">
     </a>
 
     <nav class="nav" aria-label="주요 메뉴">
@@ -167,7 +169,7 @@
       <div class="doctor">
         <div class="doctor-photo">
           <img src="assets/images/doctor-kimeunjin.jpg"
-               alt="서울진치과 대표원장 김은진" width="730" height="975" loading="lazy">
+               alt="서울진치과 대표원장 김은진" width="1086" height="1449" loading="lazy">
         </div>
         <div class="doctor-body">
           <p class="doctor-role">대표원장</p>
@@ -228,7 +230,7 @@
     <div class="wrap">
       <p class="eyebrow">HOURS</p>
       <h2>진료시간</h2>
-      <p class="section-lead">평일은 저녁 6시 30분까지, 토요일은 오후 2시까지 진료합니다.</p>
+      <p class="section-lead">수요일은 야간진료로 밤 9시까지 진료합니다.</p>
 
       <div class="hours-wrap">
         <div class="info-block">
@@ -314,7 +316,8 @@
     <div>
       <p>전화 <a href="tel:031-452-1162">031-452-1162</a></p>
       <p>이메일 <a href="mailto:seouljindental@naver.com">seouljindental@naver.com</a></p>
-      <p>평일 09:30–18:30 · 토 09:30–14:00 · 일/공휴일 휴진</p>
+      <p>월·화·목·금 10:00–18:30 · 수 14:00–21:00(야간)</p>
+      <p>토 09:00–14:00 · 일/공휴일 휴진</p>
     </div>
   </div>
   <p class="copyright">© 2026 서울진치과. All rights reserved.</p>
@@ -329,6 +332,6 @@
 </div>
 
 <!-- ?v= 는 캐시 무효화용. CSS/JS를 고치면 이 숫자를 1 올려주세요 (README 9번) -->
-<script src="assets/js/main.js?v=1" defer></script>
+<script src="assets/js/main.js?v=2" defer></script>
 </body>
 </html>
