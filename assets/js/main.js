@@ -24,7 +24,9 @@
     lat: 37.37300,                   // 경기도 안양시 동안구 경수대로 562
     lng: 126.95820,
     zoom: 17,
-    label: '서울진치과 <b>2F</b>'
+    label: '서울진치과 <b>2F</b>',
+    // 네이버 플레이스. 마커를 누르면 이 페이지가 열린다.
+    placeUrl: 'https://map.naver.com/p/entry/place/13232154'
   };
 
   /* --- 유틸 --------------------------------------------------------------- */
@@ -224,14 +226,18 @@
         logoControlOptions: { position: naver.maps.Position.BOTTOM_LEFT }
       });
 
-      new naver.maps.Marker({
+      var marker = new naver.maps.Marker({
         position: pos,
         map: map,
-        title: '서울진치과',
+        title: '서울진치과 — 네이버 플레이스에서 보기',
         icon: {
           content: '<div class="map-marker">' + NAVER_MAP.label + '</div>',
           anchor: new naver.maps.Point(0, 0)
         }
+      });
+
+      naver.maps.Event.addListener(marker, 'click', function () {
+        window.open(NAVER_MAP.placeUrl, '_blank', 'noopener');
       });
 
       // 타일이 실제로 그려진 뒤에 기본 지도를 치운다.
