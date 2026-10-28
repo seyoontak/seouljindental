@@ -278,6 +278,22 @@ h3 { font-size: 17px; font-weight: 700; letter-spacing: -.01em; }
 }
 .notice-body { font-size: 14px; color: var(--muted); }
 
+/* 10-1. 자주 묻는 질문 --------------------------------------------------- */
+.faq-list { margin-top: 28px; border-top: 2px solid var(--gray-900); }
+.faq-item { border-bottom: 1px solid var(--line); }
+.faq-item summary {
+  position: relative; cursor: pointer; list-style: none;
+  padding: 18px 36px 18px 4px; font-size: 16px; font-weight: 700; letter-spacing: -.01em;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: "+"; position: absolute; right: 8px; top: 50%; transform: translateY(-50%);
+  font-size: 20px; font-weight: 400; color: var(--orange);
+}
+.faq-item[open] summary::after { content: "\2212"; }
+.faq-item summary:hover { color: var(--orange); }
+.faq-item p { padding: 0 4px 18px; font-size: 14px; color: var(--muted); }
+
 /* 11. 진료시간 / 오시는 길 ------------------------------------------------ */
 .hours-wrap,
 .location { display: grid; gap: 12px; margin-top: 28px; }

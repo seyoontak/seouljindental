@@ -14,3 +14,13 @@
 # 사진은 바뀔 일이 드물어 하루 캐시한다.
 /assets/images/*
   Cache-Control: public, max-age=86400
+
+# 내부 문서는 공개 주소로도 열리지만 검색결과에는 나오지 않게 한다.
+/README.md
+  X-Robots-Tag: noindex
+/SEARCH-PLAN.md
+  X-Robots-Tag: noindex
+/tools/*
+  X-Robots-Tag: noindex
+/data/*
+  X-Robots-Tag: noindex

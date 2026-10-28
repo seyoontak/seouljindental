@@ -1,0 +1,60 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Dentist",
+  "@id": "https://seouljindental.com/#clinic",
+  "name": "서울진치과",
+  "alternateName": "서울진치과의원",
+  "description": "경기도 안양시 동안구 경수대로의 치과의원. 통합치의학 전문의 김은진 대표원장이 임플란트, 심미보철, 충치·신경치료, 소아치과, 잇몸치료, 사랑니 발치, 국가 구강검진을 직접 진료합니다. 수요일 야간진료, 토요일 진료.",
+  "url": "https://seouljindental.com/",
+  "logo": "https://seouljindental.com/assets/images/logo-lockup.svg",
+  "image": "https://seouljindental.com/assets/images/doctor-kimeunjin.jpg",
+  "telephone": "+82-31-452-1162",
+  "email": "seouljindental@naver.com",
+  "priceRange": "₩₩",
+  "currenciesAccepted": "KRW",
+  "isAcceptingNewPatients": true,
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "경수대로 562, 2층",
+    "addressLocality": "안양시 동안구",
+    "addressRegion": "경기도",
+    "addressCountry": "KR"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 37.373, "longitude": 126.9582 },
+  "hasMap": "https://map.naver.com/p/entry/place/13232154",
+  "areaServed": ["안양시 동안구", "평촌", "안양시"],
+  "amenityFeature": [
+    { "@type": "LocationFeatureSpecification", "name": "주차 가능", "value": true }
+  ],
+  "availableService": [
+    { "@type": "MedicalProcedure", "name": "임플란트" },
+    { "@type": "MedicalProcedure", "name": "심미보철 (크라운·라미네이트)" },
+    { "@type": "MedicalProcedure", "name": "충치·신경치료" },
+    { "@type": "MedicalProcedure", "name": "소아치과" },
+    { "@type": "MedicalProcedure", "name": "잇몸치료·스케일링" },
+    { "@type": "MedicalProcedure", "name": "사랑니 발치" },
+    { "@type": "MedicalProcedure", "name": "예방·정기검진" },
+    { "@type": "MedicalProcedure", "name": "국가 구강검진" }
+  ],
+  "founder": { "@id": "https://seouljindental.com/#doctor" },
+  "employee": {
+    "@type": "Person",
+    "@id": "https://seouljindental.com/#doctor",
+    "name": "김은진",
+    "jobTitle": "대표원장",
+    "description": "통합치의학 전문의. 서울대학교 치의학과 학사·석사·박사. 강남차병원 치과 통합치의학과 교수, 서울대학교 치의학과 외래교수 역임.",
+    "image": "https://seouljindental.com/assets/images/doctor-kimeunjin.jpg",
+    "hasCredential": { "@type": "EducationalOccupationalCredential", "credentialCategory": "통합치의학 전문의" },
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "서울대학교" },
+    "memberOf": [
+      { "@type": "Organization", "name": "대한통합치과학회" },
+      { "@type": "Organization", "name": "대한구강보건학회" },
+      { "@type": "Organization", "name": "대한심미치과학회" },
+      { "@type": "Organization", "name": "대한소아치과학회" }
+    ]
+  },
+  "sameAs": [
+    "https://map.naver.com/p/entry/place/13232154",
+    "https://blog.naver.com/seouljindental"
+  ]
+}
