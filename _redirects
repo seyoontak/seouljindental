@@ -1,0 +1,4 @@
+# Cloudflare Pages 는 .html 주소를 확장자 없는 주소로 308 리다이렉트한다.
+# 네이버 소유확인은 정확히 .html 주소에서 200 을 받아야 하므로,
+# 같은 내용의 .txt 파일을 리다이렉트 없이 그대로 보여준다 (200 = 주소 유지).
+/naver134aa769ca5df2888fa1ff91085aaca3.html  /naver134aa769ca5df2888fa1ff91085aaca3.txt  200
