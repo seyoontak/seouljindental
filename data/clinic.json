@@ -4,7 +4,7 @@
   "@id": "https://seouljindental.com/#clinic",
   "name": "서울진치과",
   "alternateName": "서울진치과의원",
-  "description": "경기도 안양시 동안구 경수대로의 치과의원. 통합치의학 전문의 김은진 대표원장이 임플란트, 심미보철, 충치·신경치료, 소아치과, 잇몸치료, 사랑니 발치, 국가 구강검진을 직접 진료합니다. 수요일 야간진료, 토요일 진료.",
+  "description": "경기도 안양시 동안구 호계동(경수대로 562 광성빌딩 2층)의 치과의원. 통합치의학 전문의 김은진 대표원장이 임플란트, 심미보철, 충치·신경치료, 소아치과, 잇몸치료, 사랑니 발치, 국가 구강검진을 직접 진료합니다. 수요일 야간진료, 토요일 진료.",
   "url": "https://seouljindental.com/",
   "logo": "https://seouljindental.com/assets/images/logo-lockup.svg",
   "image": "https://seouljindental.com/assets/images/doctor-kimeunjin.jpg",
@@ -15,16 +15,16 @@
   "isAcceptingNewPatients": true,
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "경수대로 562, 2층",
-    "addressLocality": "안양시 동안구",
+    "streetAddress": "경수대로 562 광성빌딩 2층",
+    "addressLocality": "안양시 동안구 호계동",
     "addressRegion": "경기도",
     "addressCountry": "KR"
   },
   "geo": { "@type": "GeoCoordinates", "latitude": 37.373, "longitude": 126.9582 },
   "hasMap": "https://map.naver.com/p/entry/place/13232154",
-  "areaServed": ["안양시 동안구", "평촌", "안양시"],
+  "areaServed": ["안양시 동안구 호계동", "평촌", "안양시"],
   "amenityFeature": [
-    { "@type": "LocationFeatureSpecification", "name": "주차 가능", "value": true }
+    { "@type": "LocationFeatureSpecification", "name": "건물 앞 무료 주차", "value": true }
   ],
   "availableService": [
     { "@type": "MedicalProcedure", "name": "임플란트" },
